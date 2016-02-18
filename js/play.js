@@ -1,8 +1,3 @@
-/*
-  Programming and art made by www.lessmilk.com
-  You can freely look at the code below, 
-  but you are not allowed to use the code or art to make your own games
-  */
 
 var map = [
 [0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -60,7 +55,6 @@ Game.Play.prototype = {
     this.labelTuto = game.add.text(Math.floor(w/2)+0.5, h-35+0.5, 'press space to jump', { font: '18px Arial', fill: '#fff', align: 'center' });
     this.labelTuto.anchor.setTo(0.5, 0.5);
 
-    // this.spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
     this.game.input.onDown.add(this.letsJump, this);
 
     this.level = 0; 
@@ -70,9 +64,9 @@ Game.Play.prototype = {
   },
 
   letsJump: function() {
-    console.log('jump');
     if (this.player.body.touching.down) {
       this.playerJump();
+
       if (!this.gameStarted) {
         this.gameStarted = true;
         this.player.body.velocity.x = 170;
@@ -84,16 +78,6 @@ Game.Play.prototype = {
   update: function() {
     this.game.physics.arcade.collide(this.player, this.line);
     this.game.physics.arcade.overlap(this.player, this.cubes, this.playerHit, null, this);
-
-    // if (this.spaceKey.isDown && this.player.body.touching.down) {
-    // // if (this.game.input.activePointer.isDown && this.player.body.touching.down) {
-    //   this.playerJump();
-    //   if (!this.gameStarted) {
-    //     this.gameStarted = true;
-    //     this.player.body.velocity.x = 170;
-    //     game.add.audio('music').play('', 0, 0.1, true);
-    //   }
-    // }
 
     if (this.player.body.touching.down && this.gameStarted) { 
       this.player.body.velocity.x = 170;

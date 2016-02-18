@@ -11,6 +11,11 @@ Game.Load = function (game) {};
 
 Game.Load.prototype = {
   preload: function () {
+    game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;        
+    //have the game centered horizontally    
+    game.scale.pageAlignHorizontally = true;    
+    game.scale.pageAlignVertically = true;
+    
     game.stage.backgroundColor = '#9b59b6';
     label1 = game.add.text(Math.floor(w/2), Math.floor(h/2)-20, 'Box Jump', { font: '30px Arial', fill: '#fff' });
     label2 = game.add.text(Math.floor(w/2)+0.5, Math.floor(h/2)+20+0.5, 'loading...', { font: '16px Arial', fill: '#fff' });
