@@ -29,19 +29,20 @@ Game.Play = function (game) {};
 Game.Play.prototype = {    
   create: function () {
     //  We're going to be using physics, so enable the Arcade Physics system
-    this.game.physics.startSystem(Phaser.Physics.ARCADE);
+    game.physics.startSystem(Phaser.Physics.ARCADE);
 
-    this.player = this.game.add.sprite(80, h*2/3-20, 'player');
-    this.game.physics.arcade.enable(this.player);
+    this.player = game.add.sprite(80, h*2/3-20, 'player');
+    game.physics.arcade.enable(this.player);
     this.player.anchor.setTo(0.5, 0.5);
+    console.log(typeof this);
 
     this.cubes = game.add.group();
     //  We will enable physics for any cube that is created in this group
     this.cubes.enableBody = true;
     this.cubes.createMultiple(20, 'cube');
 
-    this.line = this.game.add.sprite(w/2, Math.floor(h*2/3), 'line');
-    this.game.physics.arcade.enable(this.line);
+    this.line = game.add.sprite(w/2, Math.floor(h*2/3), 'line');
+    game.physics.arcade.enable(this.line);
     this.line.anchor.setTo(0.5, 0.5);
     this.line.body.immovable = true;
 
@@ -55,7 +56,7 @@ Game.Play.prototype = {
     this.labelTuto = game.add.text(Math.floor(w/2)+0.5, h-35+0.5, 'press space to jump', { font: '18px Arial', fill: '#fff', align: 'center' });
     this.labelTuto.anchor.setTo(0.5, 0.5);
 
-    this.game.input.onDown.add(this.letsJump, this);
+    game.input.onDown.add(this.letsJump, this);
 
     this.level = 0; 
     this.gameStarted = false;
@@ -76,8 +77,8 @@ Game.Play.prototype = {
   },
 
   update: function() {
-    this.game.physics.arcade.collide(this.player, this.line);
-    this.game.physics.arcade.overlap(this.player, this.cubes, this.playerHit, null, this);
+    game.physics.arcade.collide(this.player, this.line);
+    game.physics.arcade.overlap(this.player, this.cubes, this.playerHit, null, this);
 
     if (this.player.body.touching.down && this.gameStarted) { 
       this.player.body.velocity.x = 170;
@@ -153,7 +154,7 @@ Game.Play.prototype = {
       if (maap[i] != 0) {
         cube.scale.y = 0;
         cube.anchor.setTo(0, 1);
-        this.game.add.tween(cube.scale).to({y : height}, 300*height, Phaser.Easing.Linear.None).start();
+        game.add.tween(cube.scale).to({y : height}, 300*height, Phaser.Easing.Linear.None).start();
       }
     }
   }
