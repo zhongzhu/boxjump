@@ -83,7 +83,6 @@ Game.Play.prototype = {
       this.player.body.velocity.x = 170;
     }
 
-
     if (this.player.x >= game.width - 60)  this.loadLevel();
 
     if (this.player.y > this.line.y)  this.initPlayer();

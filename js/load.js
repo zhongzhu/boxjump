@@ -7,7 +7,7 @@ Game.Load = function (game) {};
 Game.Load.prototype = {
   preload: function () {
     game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;        
-    //have the game centered horizontally    
+    //have the game centered
     game.scale.pageAlignHorizontally = true;    
     game.scale.pageAlignVertically = true;
     
