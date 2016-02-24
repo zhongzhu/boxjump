@@ -34,7 +34,6 @@ Game.Play.prototype = {
     this.player = game.add.sprite(80, h*2/3-20, 'player');
     game.physics.arcade.enable(this.player);
     this.player.anchor.setTo(0.5, 0.5);
-    console.log(typeof this);
 
     this.cubes = game.add.group();
     //  We will enable physics for any cube that is created in this group
@@ -48,8 +47,6 @@ Game.Play.prototype = {
 
     this.hit_s = game.add.audio('hit');
     this.jump_s = game.add.audio('jump');
-    this.jump_s.mute = true;
-    this.jump_s.play();
 
     this.labelDeath = game.add.text(100, h-35, '0', { font: '18px Arial', fill: '#fff', align: 'center' });
     this.labelDeath.anchor.setTo(0.5, 0.5);
@@ -94,7 +91,6 @@ Game.Play.prototype = {
 
   playerJump: function() {
     this.player.body.velocity.y = -250;
-    this.jump_s.mute = false;
     this.jump_s.play('', 0, 0.1);
   },
 
