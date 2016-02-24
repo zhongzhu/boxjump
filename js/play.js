@@ -31,7 +31,7 @@ Game.Play.prototype = {
     //  We're going to be using physics, so enable the Arcade Physics system
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
-    this.player = game.add.sprite(80, h*2/3-20, 'player');
+    this.player = game.add.sprite(80, game.height*2/3-20, 'player');
     game.physics.arcade.enable(this.player);
     this.player.anchor.setTo(0.5, 0.5);
 
@@ -40,7 +40,7 @@ Game.Play.prototype = {
     this.cubes.enableBody = true;
     this.cubes.createMultiple(20, 'cube');
 
-    this.line = game.add.sprite(w/2, Math.floor(h*2/3), 'line');
+    this.line = game.add.sprite(game.width/2, Math.floor(game.height*2/3), 'line');
     game.physics.arcade.enable(this.line);
     this.line.anchor.setTo(0.5, 0.5);
     this.line.body.immovable = true;
@@ -48,11 +48,11 @@ Game.Play.prototype = {
     this.hit_s = game.add.audio('hit');
     this.jump_s = game.add.audio('jump');
 
-    this.labelDeath = game.add.text(100, h-35, '0', { font: '18px Arial', fill: '#fff', align: 'center' });
+    this.labelDeath = game.add.text(100, game.height-35, '0', { font: '18px Arial', fill: '#fff', align: 'center' });
     this.labelDeath.anchor.setTo(0.5, 0.5);
-    this.labelLevel = game.add.text(w-100+0.5, h-35, '1/'+map.length, { font: '18px Arial', fill: '#fff', align: 'center' });
+    this.labelLevel = game.add.text(game.width-100+0.5, game.height-35, '1/'+map.length, { font: '18px Arial', fill: '#fff', align: 'center' });
     this.labelLevel.anchor.setTo(0.5, 0.5);
-    this.labelTuto = game.add.text(Math.floor(w/2)+0.5, h-35+0.5, 'press space to jump', { font: '18px Arial', fill: '#fff', align: 'center' });
+    this.labelTuto = game.add.text(Math.floor(game.width/2)+0.5, game.height-35+0.5, 'press space to jump', { font: '18px Arial', fill: '#fff', align: 'center' });
     this.labelTuto.anchor.setTo(0.5, 0.5);
 
     game.input.onDown.add(this.letsJump, this);
@@ -84,7 +84,7 @@ Game.Play.prototype = {
     }
 
 
-    if (this.player.x >= w - 60)  this.loadLevel();
+    if (this.player.x >= game.width - 60)  this.loadLevel();
 
     if (this.player.y > this.line.y)  this.initPlayer();
   },
@@ -116,7 +116,7 @@ Game.Play.prototype = {
   initPlayer: function() {
     this.player.body.gravity.y = 730;
     this.player.x = 60;
-    this.player.y = h*2/3-this.player.height/2-30;
+    this.player.y = game.height*2/3-this.player.height/2-30;
     this.player.body.velocity.x = 0;
     this.player.body.velocity.y = 0;
     this.player.body.touching.down = false;
@@ -130,23 +130,23 @@ Game.Play.prototype = {
       cube = this.cubes.getFirstExists(false);
 
       if (maap[i] == 1) {
-        cube.reset(100+i*cube.width, h*2/3);
+        cube.reset(100+i*cube.width, game.height*2/3);
         height = 0.3;
       }
       else if (maap[i] == 2) {
-        cube.reset(100+i*cube.width, h*2/3);
+        cube.reset(100+i*cube.width, game.height*2/3);
         height = 1;
       }
       else if (maap[i] == 3) {
-        cube.reset(100+i*cube.width, h*2/3);
+        cube.reset(100+i*cube.width, game.height*2/3);
         height = 1.5;
       }
       else if (maap[i] == 4) {
-        cube.reset(100+i*cube.width, h*2/3);
+        cube.reset(100+i*cube.width, game.height*2/3);
         height = 1.8;
       }
       else if (maap[i] == 5) {
-        cube.reset(100+i*cube.width, h*2/3-22);
+        cube.reset(100+i*cube.width, game.height*2/3-22);
         height = 0.5;
       }
 
