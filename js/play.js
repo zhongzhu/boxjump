@@ -52,7 +52,7 @@ Game.Play.prototype = {
     this.labelDeath.anchor.setTo(0.5, 0.5);
     this.labelLevel = game.add.text(game.width-100+0.5, game.height-35, '1/'+map.length, { font: '18px Arial', fill: '#fff', align: 'center' });
     this.labelLevel.anchor.setTo(0.5, 0.5);
-    this.labelTuto = game.add.text(Math.floor(game.width/2)+0.5, game.height-35+0.5, 'press space to jump', { font: '18px Arial', fill: '#fff', align: 'center' });
+    this.labelTuto = game.add.text(Math.floor(game.width/2)+0.5, game.height-35+0.5, '点击屏幕让方块跳起来', { font: '18px Arial', fill: '#fff', align: 'center' });
     this.labelTuto.anchor.setTo(0.5, 0.5);
 
     game.input.onDown.add(this.letsJump, this);
